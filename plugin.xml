@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordovaAudioMerger" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordovaAudioMerger</name>
+
+    <!-- JavaScript module configuration -->
+    <js-module name="cordovaAudioMerger" src="www/cordovaAudioMerger.js">
+        <clobbers target="cordova.plugins.cordovaAudioMerger" />
+    </js-module>
+
+    <!-- Android platform configuration -->
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="cordovaAudioMerger">
+                <param name="android-package" value="cordovaAudioMerger.cordovaAudioMerger" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+       
+        <source-file src="src/android/cordovaAudioMerger.java" target-dir="src/cordovaAudioMerger/cordovaAudioMerger" />
+         <framework custom="true" src="src/android/mobile-ffmpeg-x2.gradle" type="gradleReference" />     
+    </platform>
+
+    <!-- iOS platform configuration -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="cordovaAudioMerger">
+                <param name="ios-package" value="cordovaAudioMerger" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/cordovaAudioMerger.h" />
+        <source-file src="src/ios/cordovaAudioMerger.m" />
+         <hook type="after_platform_add" src="hooks/after_platform_add_install_pods.js" />
+<podspec>
+
+   <config>
+
+        <source url="https://github.com/arthenica/ffmpeg-kit.git"/>
+
+   </config>
+
+   <pods use-frameworks="true">
+
+        <pod name="ffmpeg-kit-ios-full" spec="~> 6.0.0" />
+
+   </pods>
+
+</podspec>
+    
+    
+</platform>
+</plugin>
