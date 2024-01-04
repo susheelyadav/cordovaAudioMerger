@@ -2,7 +2,7 @@
 #include <ffmpegkit/FFmpegKit.h>
 #import "cordovaAudioMerger.h"
 
-@implementation AudioMerger
+@implementation cordovaAudioMerger
 
 - (void)mergeAudioFiles:(CDVInvokedUrlCommand *)command {
     NSArray *fileURIs = [command.arguments objectAtIndex:0]; // Array of file URIs
